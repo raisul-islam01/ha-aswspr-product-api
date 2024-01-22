@@ -126,6 +126,11 @@ function products_insert_woocommerce_callback()
 
             // Update product
             $client->put('products/' . $product_id, $product_data);
+
+            if ( $department_code ) {
+                // Update product categories
+                wp_set_object_terms( $product_id, $department_code ,'product_cat' );
+            }
         } else {
             // Create a new product
             $product_data = [
@@ -146,6 +151,9 @@ function products_insert_woocommerce_callback()
             // Create the product
             $product = $client->post('products', $product_data);
             $product_id = $product->id;
+
+            // Set product categories
+            wp_set_object_terms( $product_id, $department_code ,'product_cat' );
 
             // Update the status of the processed product in your database
             $wpdb->update(
