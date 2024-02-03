@@ -1,9 +1,9 @@
 <?php
 
 /*
- * Plugin Name:       Ha Aswspr Product API
+ * Plugin Name:       Aswspr Product API
  * Plugin URI:        https://ha.aswspr.com
- * Description:       Ha aswspr product api
+ * Description:       aswspr product api
  * Version:           1.0.0
  * Requires at least: 5.2
  * Requires PHP:      7.2
@@ -38,5 +38,6 @@ register_deactivation_hook( __FILE__, 'ha_aswspr_products_table_remove' );
 
 // Including requirements files
 require_once HA_PLUGIN_PATH . '/inc/ha_aswspr_product_db.php';
-require_once HA_PLUGIN_PATH . '/inc/aswspr_add_products_to_insert_db.php';
-require_once HA_PLUGIN_PATH . '/inc/ha_aswspr_products_insert_woocommerce.php';
+require_once HA_PLUGIN_PATH . '/inc/aswspr_add_products_insert_db.php';
+require_once HA_PLUGIN_PATH . '/inc/ha_products_insert_woocommerce.php';
+require_once HA_PLUGIN_PATH . '/inc/shortcode_api.php';

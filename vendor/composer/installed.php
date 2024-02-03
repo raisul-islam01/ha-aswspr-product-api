@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
-        'reference' => 'a953f6ed50946bad72682884922a5d0e7d0adf59',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '60841a2f34b07a8547ca5951bd528d42264d432c',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => 'a953f6ed50946bad72682884922a5d0e7d0adf59',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '60841a2f34b07a8547ca5951bd528d42264d432c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -25,6 +25,15 @@
             'reference' => 'd3b292f04c0b3b21dced691ebad8be073a83b4ad',
             'type' => 'library',
             'install_path' => __DIR__ . '/../automattic/woocommerce',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'halaxa/json-machine' => array(
+            'pretty_version' => '1.1.4',
+            'version' => '1.1.4.0',
+            'reference' => '5147f38f74d7ab3e27733e3f3bdabbd2fd28e3fa',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../halaxa/json-machine',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
