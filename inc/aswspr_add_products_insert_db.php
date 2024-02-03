@@ -46,11 +46,14 @@ function insert_products_to_db_callback()
     // Insert to database
     foreach ( $items as $item ) {
 
+        // convert to json
+        $json_data = json_encode($item);
+
         $wpdb->insert(
             $table_name,
             [
                 'operation_type'  => 'product_create',
-                'operation_value' => $item,
+                'operation_value' => $json_data,
                 'status'          => 'pending',
             ]
         );

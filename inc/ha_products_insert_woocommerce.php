@@ -18,6 +18,10 @@ function products_insert_woocommerce_callback()
     // Retrieve pending products from the database
     $products = $wpdb->get_results("SELECT * FROM $table_name_products WHERE status = 'pending' LIMIT 1");
 
+    // echo "<pre>";
+    // print_r($products);
+    // wp_die();
+
     // Loop through each pending product
     foreach ($products as $product) {
         $product_data = json_decode($product->operation_value, true);
@@ -26,8 +30,8 @@ function products_insert_woocommerce_callback()
         // wp_die();
         //vendor file
         $website_url     = home_url();
-        $consumer_key    = 'ck_26a38e2c4ae117e15a8ea6cd6f57c92cc9a222af';
-        $consumer_secret = 'cs_0d095cf92a02d645099f8d911bfe616d8ed12a17';
+        $consumer_key    = 'ck_ac42e8c8fa1c151cd7651958beca538ff5ceaa17';
+        $consumer_secret = 'cs_acf55ed2fa1bacfbc628f1a4f14af3458d67f2a1';
 
         // Extract product details from the decoded data
         $warehouse_code      = isset($product_data['WarehouseCode']) ? $product_data['WarehouseCode'] : '';
@@ -129,7 +133,6 @@ function products_insert_woocommerce_callback()
 
             // update product
             $client->put('products/' . $product_id, $product_data);
-
         } else {
             // Create a new product
             $product_data = [
@@ -185,7 +188,6 @@ function products_insert_woocommerce_callback()
         // }
         // update_post_meta($product_id, '_manage_stock', 'yes');
         return '<h4>product insert successfully</h4>';
-        
     }
 
     ob_get_clean();
