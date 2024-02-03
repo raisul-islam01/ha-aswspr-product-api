@@ -18,17 +18,12 @@ function products_insert_woocommerce_callback()
     // Retrieve pending products from the database
     $products = $wpdb->get_results("SELECT * FROM $table_name_products WHERE status = 'pending' LIMIT 1");
 
-    // echo "<pre>";
-    // print_r($products);
-    // wp_die();
-
     // Loop through each pending product
     foreach ($products as $product) {
+
         $product_data = json_decode($product->operation_value, true);
-        // echo "<pre>";
-        // print_r($product_data);
-        // wp_die();
-        //vendor file
+
+        //woocommerce store information
         $website_url     = home_url();
         $consumer_key    = 'ck_ac42e8c8fa1c151cd7651958beca538ff5ceaa17';
         $consumer_secret = 'cs_acf55ed2fa1bacfbc628f1a4f14af3458d67f2a1';
