@@ -25,8 +25,8 @@ function products_insert_woocommerce_callback()
 
         //woocommerce store information
         $website_url     = home_url();
-        $consumer_key    = 'ck_ac42e8c8fa1c151cd7651958beca538ff5ceaa17';
-        $consumer_secret = 'cs_acf55ed2fa1bacfbc628f1a4f14af3458d67f2a1';
+        $consumer_key    = 'ck_eac96df93ffb3c7465dec6b82ec9aa8c94d7bf03';
+        $consumer_secret = 'cs_60723c6f2b6456a6b0b8a8172119ec554a282aed';
 
         // Extract product details from the decoded data
         $warehouse_code      = isset($product_data['WarehouseCode']) ? $product_data['WarehouseCode'] : '';
@@ -70,6 +70,15 @@ function products_insert_woocommerce_callback()
         $height      = isset($product_data['Height']) ? $product_data['Height'] : '';
         $volume      = isset($product_data['Volume']) ? $product_data['Volume'] : '';
         $stock      = isset($product_data['Quantity1']) ? $product_data['Quantity1'] : '';
+        $color      = isset($product_data['Color']) ? $product_data['Color'] : '';
+        $size      = isset($product_data['Size']) ? $product_data['Size'] : '';
+        $style      = isset($product_data['Style']) ? $product_data['Style'] : '';
+        $barcode      = isset($product_data['BrandCode']) ? $product_data['BrandCode'] : '';
+        $pack      = isset($product_data['Pack']) ? $product_data['Pack'] : '';
+        $category      = isset($product_data['Attribute']) ? $product_data['Attribute'] : '';
+        $ProductsUserCode      = isset($product_data['ProductsUserCode']) ? $product_data['ProductsUserCode'] : '';
+        $ProductsComputerName      = isset($product_data['ProductsComputerName']) ? $product_data['ProductsComputerName'] : '';
+        $TaxRegionDescription      = isset($product_data['TaxRegionDescription']) ? $product_data['TaxRegionDescription'] : '';
 
 
         // Set up the API client with your WooCommerce store URL and credentials
@@ -165,10 +174,22 @@ function products_insert_woocommerce_callback()
         update_post_meta($product_id, '_sku', $product_code);
         update_post_meta($product_id, '_regular_price', $product_price);
         update_post_meta($product_id, '_price', $product_price);
-        update_post_meta($product_id, '_virtual', 'yes');
-        update_post_meta($product_id, '_downloadable', 'no');
-        update_post_meta($product_id, '_download_limit', -1);
-        update_post_meta($product_id, '_download_expiry', -1);
+        update_post_meta($product_id, '_DepartmentCode', $department_code);
+        update_post_meta($product_id, '_DepartmentName', $department_name);
+        update_post_meta($product_id, '_ValuationCode', $valuation_code);
+        update_post_meta($product_id, '_VendorCode', $vendor_code);
+        update_post_meta($product_id, '_VendorName', $vendor_name);
+        update_post_meta($product_id, '_Color', $color);
+        update_post_meta($product_id, '_Size', $size);
+        update_post_meta($product_id, '_Style', $style);
+        update_post_meta($product_id, '_BrandCode', $barcode);
+        update_post_meta($product_id, '_Model', $model_code);
+        update_post_meta($product_id, '_Pack', $pack);
+        update_post_meta($product_id, '_TaxRegionDescription', $TaxRegionDescription);
+        update_post_meta($product_id, '_ProductsComputerName', $ProductsComputerName);
+        update_post_meta($product_id, '_ProductsUserCode', $ProductsUserCode);
+
+        wp_set_object_terms($product_id, $category, 'product_cat');
 
 
 
